@@ -20,21 +20,28 @@ export const addTask = async(parent, { input: { title, description, } }, { user,
 
 // get accounts
 export const getTasks = async(_parent, { filters: { offset = 0, limit = 50, } }, { user, })=> {
+    if( !user ) {
+
+        return []
+    }
 
     console.log("user ", user)
     // console.log("args ", args)
     console.log("offset, limit ", offset, limit);
     
-    return await TaskModel.find() // .skip(offset).limit(limit)
+    return await TaskModel.find({ accountId: user?._id }).lean().skip(offset).limit(limit)
 }
 
 
 // get accounts
 export const getTaskAccount = async({ accountId, }, args, { user, })=> {
+    if( !accountId ) {
 
+        return null
+    }
     console.log("user ", user)
     // console.log("parent ", parent)
     console.log("args ", args);
     
-    return await AccountModel.findById(accountId) // .skip(offset).limit(limit)
+    return await AccountModel.findById(accountId)
 }
