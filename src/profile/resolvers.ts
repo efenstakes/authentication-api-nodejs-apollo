@@ -71,6 +71,7 @@ export const login = async(parent, { input: { email, password, } }, context)=> {
 }
 
 // get accounts
+// this exists here for testing only
 // { filters: { offset, limit, } }
 export const getAccounts = async(_parent, args, { user, })=> {
 
