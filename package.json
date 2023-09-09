@@ -5,6 +5,9 @@
   "license": "MIT",
   "type": "commonjs",
   "scripts": {
+    "start": "node ./build/index.js",
+    "build": "tsc -p .",
+    "dev": "nodemon ./src/index.ts"
   },
   "dependencies": {
     "@apollo/server": "^4.9.3",
